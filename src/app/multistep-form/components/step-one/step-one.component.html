@@ -1,0 +1,33 @@
+<div [formGroup]="parent">
+  <div formGroupName="stepOne">
+    <div>
+      <label for="firstName">First name</label>
+      <input type="text" formControlName="firstName" id="firstName" placeholder="Enter your name">
+    </div>
+    <div>
+      <label for="secondName">Second name</label>
+      <input type="text" formControlName="lastName" id="secondName" placeholder="Enter your second name">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" id="email" placeholder="Enter your email">
+    </div>
+    <div class="step-one__gender">
+      <label for="male">Male</label>
+      <input name="gender" type="radio" formControlName="gender" id="male" value="male">
+      <label for="female">Female</label>
+      <input name="gender" type="radio" formControlName="gender" id="female" value="female">
+    </div>
+    <div>
+      <label for="isMarried">Are you married?</label>
+      <input name="isMarried" formControlName="isMarried" id="isMarried" type="checkbox">
+    </div>
+    <div formGroupName="country">
+      <label for="country">Select country</label>
+      <select formControlName="selectedCountry" id="country">
+        <option value="" selected hidden>Select country</option>
+        <option [value]="country.value" *ngFor="let country of listOfCountries">{{country.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="select">
+  <input type="text" value="{{value}}" (click)="toggleList()" (keydown)="false" placeholder="{{placeholder}}" #selectInput>
+  <div class="select-list" *ngIf="listIsOpen">
+    <ul>
+      <li *ngFor="let item of listOfItems; let i = index" class="select-list__item" (click)="selectItem(i)">{{item}}</li>
+    </ul>
+  </div>
+</div>

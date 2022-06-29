@@ -1,0 +1,48 @@
+.multistep-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  position: relative;
+  padding: 10px 20px;
+  border: 2px solid lightslategray;
+  border-radius: 4px;
+  width: 270px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 270px;
+  position: absolute;
+  bottom: -50px;
+}
+
+.button-wrapper button {
+  padding: 10px 20px;
+  background: cadetblue;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: opacity .3s;
+}
+
+.button-wrapper button:hover {
+  opacity: .7;
+}
+
+
+#back {
+  margin-right: auto;
+}
+
+
+#next {
+  margin-left: auto;
+}

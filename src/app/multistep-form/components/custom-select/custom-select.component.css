@@ -1,0 +1,13 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.select-list__item {
+  cursor: pointer;
+}
+
+.select-list__item:hover {
+  background-color: blue;
+  color: white;
+}

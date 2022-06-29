@@ -1,0 +1,22 @@
+label {
+  display: block;
+  font-size: 14px;
+  font-family: Arial;
+  color: dimgrey;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: -5px;
+}
+
+input {
+  border: 1px solid lightgray;
+  width: 100%;
+  outline: none;
+  height: 20px;
+  padding: 5px 10px;
+}
+
+
+input[placeholder] {
+  font-size: 10px;
+}
