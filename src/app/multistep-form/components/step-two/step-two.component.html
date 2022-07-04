@@ -1,6 +1,5 @@
-Two
 <div [formGroup]="parent">
   <div formGroupName="stepTwo">
-    <app-custom-select formControlName="programmingLanguages"></app-custom-select>
+    <app-custom-select formControlName="selectedLanguage" [languages]="languages"></app-custom-select>
   </div>
 </div>

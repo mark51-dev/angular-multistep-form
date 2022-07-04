@@ -1,8 +1,10 @@
 <div class="select">
-  <input type="text" value="{{value}}" (click)="toggleList()" (keydown)="false" placeholder="{{placeholder}}" #selectInput>
+  <input type="text" class="select-input" value="{{value}}" (click)="toggleList()" (keydown)="false"
+         placeholder="{{placeholder}}"
+         #selectInput readonly>
   <div class="select-list" *ngIf="listIsOpen">
     <ul>
-      <li *ngFor="let item of listOfItems; let i = index" class="select-list__item" (click)="selectItem(i)">{{item}}</li>
+      <li *ngFor="let item of languages; let i = index" class="select-list__item" (click)="selectItem(i)">{{item}}</li>
     </ul>
   </div>
 </div>

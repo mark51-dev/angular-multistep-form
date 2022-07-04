@@ -1,12 +1,35 @@
 <div [formGroup]="parent">
+  <div class="errors">
+    <div *ngIf="required('firstName')">
+      First name is required!
+    </div>
+    <div *ngIf="required('lastName')">
+      Last name is required!
+    </div>
+    <div *ngIf="required('email')">
+      Email is required!
+    </div>
+    <div *ngIf="required('password')">
+      Password is required!
+    </div>
+    <div *ngIf="checkPassword()">
+      <span>- at least 8 characters</span>
+      <span>- must contain at<br> least 1 uppercase letter <br>, 1 lowercase letter,<br> and 1 number</span>
+      <span>- Can contain special characters</span>
+    </div>
+  </div>
   <div formGroupName="stepOne">
     <div>
       <label for="firstName">First name</label>
       <input type="text" formControlName="firstName" id="firstName" placeholder="Enter your name">
     </div>
     <div>
-      <label for="secondName">Second name</label>
-      <input type="text" formControlName="lastName" id="secondName" placeholder="Enter your second name">
+      <label for="lastName">Second name</label>
+      <input type="text" formControlName="lastName" id="lastName" placeholder="Enter your second name">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" id="password" placeholder="Enter your password">
     </div>
     <div>
       <label for="email">Email</label>

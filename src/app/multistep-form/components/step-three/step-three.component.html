@@ -1,13 +1,12 @@
-Three
 <div>
   <input type="text" [(ngModel)]="value" (change)="textInput()">
 </div>
 <div [formGroup]="parent">
   <div formGroupName="stepThree">
     <div formArrayName="listOfLanguages">
-      <div *ngFor="let language of listOfLanguages; let i = index;">
+      <div *ngFor="let language of listOfLanguages; let i = index;" class="list">
         <div [formGroupName]="i">
-          <div>{{ language.value }}</div>
+          <div class="list__item">{{ language.value }}</div>
         </div>
       </div>
     </div>

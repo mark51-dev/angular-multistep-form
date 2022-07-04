@@ -3,11 +3,30 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.select {
+  position: relative;
+}
+
+.select-input {
+  padding: 10px 20px;
+}
+
+.select-list {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: white;
+  z-index: 100;
+  border: 1px solid grey;
+}
+
 .select-list__item {
   cursor: pointer;
+  padding: 5px 10px;
 }
 
 .select-list__item:hover {
-  background-color: blue;
+  background-color: grey;
   color: white;
 }

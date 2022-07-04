@@ -2,12 +2,13 @@
   <div class="wrapper">
     <form [formGroup]="form" novalidate>
       <app-step-one [parent]="form" [listOfCountries]="listOfCountries" *ngIf="currentStep === 1"></app-step-one>
-      <app-step-two [parent]="form" *ngIf="currentStep === 2"></app-step-two>
+      <app-step-two [parent]="form" [languages]="languages" *ngIf="currentStep === 2"></app-step-two>
       <app-step-three [parent]="form" (newItem)="addNewItem($event)" *ngIf="currentStep === 3"></app-step-three>
     </form>
     <div class="button-wrapper">
       <button id="back" *ngIf="currentStep > 1" (click)="decrement()">Back</button>
-      <button id="next" *ngIf="currentStep < allStepsCount" (click)="increment()">Next</button>
+      <button id="next" *ngIf="currentStep < allStepsCount" (click)="increment()" [disabled]="form.valid">Next
+      </button>
     </div>
   </div>
 </div>

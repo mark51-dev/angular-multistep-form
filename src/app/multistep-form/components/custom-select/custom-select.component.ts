@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, ElementRef, forwardRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -14,24 +14,19 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class CustomSelectComponent implements OnInit, ControlValueAccessor {
-  @Input()
-  // @ts-ignore
-  parent;
+  @Input() parent: FormGroup;
+  @Input() languages: string[];
   value: any;
   listIsOpen: boolean = false;
-  // @ts-ignore
-  listOfItems: string[];
-  @ViewChild('selectInput', {static: true})
-  // @ts-ignore
-  selectInput: ElementRef;
+  @ViewChild('selectInput', {static: true}) selectInput: ElementRef;
   placeholder: string = 'Select program language';
+  defaultLanguage: string = 'C++';
 
-  constructor(private renderer: Renderer2) { }
-
-  // @ts-ignore
   onChange: Function;
-  // @ts-ignore
   onTouched: Function;
+
+  constructor(private renderer: Renderer2) {
+  }
 
   ngOnInit(): void {
     this.renderer.listen('window', 'click', (e: Event) => {
@@ -50,19 +45,17 @@ export class CustomSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    const {defaultLanguage, listOfLanguages} = obj;
-    this.value = defaultLanguage;
-    this.listOfItems = listOfLanguages;
+    this.value = this.defaultLanguage;
   }
 
   toggleList(): void {
     this.listIsOpen = !this.listIsOpen;
   }
 
-  selectItem(idx: number) {
-    let selectedItem = this.listOfItems[idx];
+  selectItem(idx: number): void {
+    let selectedItem = this.languages[idx];
     this.value = selectedItem;
-    this.onChange();
+    this.onChange(this.value);
     this.onTouched();
   }
 }

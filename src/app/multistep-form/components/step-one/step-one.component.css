@@ -7,12 +7,17 @@ label {
   margin-bottom: 5px;
 }
 
-input[type="text"] {
+.errors {
+  color: red;
+}
+
+input[type="text"], input[type="password"] {
   border: 1px solid lightgray;
   width: 100%;
   outline: none;
-  height: 20px;
+  height: 35px;
   padding: 5px 10px;
+  box-sizing: border-box;
 }
 
 
@@ -25,12 +30,7 @@ div {
 }
 
 .step-one__gender {
-  display: flex;
-  flex-direction: column;
-}
 
-.step-one__gender label {
-  display: flex;
 }
 
 #male, #female {

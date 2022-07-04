@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {countrySelect} from "../../shared/model/country.interface";
 
@@ -8,16 +8,18 @@ import {countrySelect} from "../../shared/model/country.interface";
   styleUrls: ['./multistep-form-container.component.css']
 })
 export class MultistepFormContainerComponent implements OnInit {
-  // @ts-ignore
   form: FormGroup;
   currentStep: number = 1;
-  constructor(private fb: FormBuilder) { }
+
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       stepOne: this.fb.group({
         firstName: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
+        lastName: ['', [Validators.required, Validators.minLength(5)]],
+        password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]],
         email: ['', [Validators.required]],
         gender: ['male'],
         isMarried: [false],
@@ -26,10 +28,7 @@ export class MultistepFormContainerComponent implements OnInit {
         })
       }),
       stepTwo: this.fb.group({
-        programmingLanguages: [{
-          defaultLanguage: 'JS',
-          listOfLanguages: ['C++', 'JS', 'Assembler']
-        }]
+        selectedLanguage: ''
       }),
       stepThree: this.fb.group({
         listOfLanguages: this.fb.array([
@@ -39,8 +38,6 @@ export class MultistepFormContainerComponent implements OnInit {
         ])
       })
     })
-
-    console.log(this.allStepsCount);
   }
 
   get allStepsCount(): number {
@@ -64,20 +61,23 @@ export class MultistepFormContainerComponent implements OnInit {
     ];
   }
 
+  get languages(): string[] {
+    return ['C++', 'JS', 'Assembler'];
+  }
+
   get languagesList(): FormArray {
     return this.form.get('stepThree.listOfLanguages') as FormArray;
   }
 
-  addNewItem(text: string) {
-    console.log(text);
+  addNewItem(text: string): void {
     this.languagesList.insert(this.languagesList.length, this.fb.group(this.fb.control(text)));
   }
 
-  increment() {
+  increment(): void {
     this.currentStep++;
   }
 
-  decrement() {
+  decrement(): void {
     this.currentStep--;
   }
 }
